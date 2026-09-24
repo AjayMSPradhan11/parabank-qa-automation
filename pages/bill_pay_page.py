@@ -1,22 +1,21 @@
-from selenium.webdriver.common.by import By
-
 from pages.base_page import BasePage
+from pages.locators import BillPayPageLocators
 
 SYSTEM_URL = "https://parabank.parasoft.com/parabank/billpay.htm"
 
 
 class BillPayPage(BasePage):
-    payee_name = (By.NAME, "payee.name")
-    address = (By.NAME, "payee.address.street")
-    city = (By.NAME, "payee.address.city")
-    state = (By.NAME, "payee.address.state")
-    zip_code = (By.NAME, "payee.address.zipCode")
-    phone = (By.NAME, "payee.phoneNumber")
-    account_number = (By.NAME, "payee.accountNumber")
-    verify_account_number = (By.NAME, "verifyAccount")
-    amount = (By.NAME, "amount")
-    send_payment_button = (By.XPATH, "//input[@value='Send Payment']")
-    confirmation_title = (By.CSS_SELECTOR, "#billpayResult h1.title")
+    payee_name = BillPayPageLocators.PAYEE_NAME
+    address = BillPayPageLocators.ADDRESS
+    city = BillPayPageLocators.CITY
+    state = BillPayPageLocators.STATE
+    zip_code = BillPayPageLocators.ZIP_CODE
+    phone = BillPayPageLocators.PHONE
+    account_number = BillPayPageLocators.ACCOUNT_NUMBER
+    verify_account_number = BillPayPageLocators.VERIFY_ACCOUNT_NUMBER
+    amount = BillPayPageLocators.AMOUNT
+    send_payment_button = BillPayPageLocators.SEND_PAYMENT_BUTTON
+    confirmation_title = BillPayPageLocators.CONFIRMATION_TITLE
 
     def open(self):
         self.driver.get(SYSTEM_URL)

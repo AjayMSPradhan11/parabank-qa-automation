@@ -1,26 +1,26 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 
 from pages.base_page import BasePage
+from pages.locators import RegisterPageLocators
 
 SYSTEM_URL = "https://parabank.parasoft.com/parabank/register.htm"
 
 
 class RegisterPage(BasePage):
-    first_name = (By.ID, "customer.firstName")
-    last_name = (By.ID, "customer.lastName")
-    address = (By.ID, "customer.address.street")
-    city = (By.ID, "customer.address.city")
-    state = (By.ID, "customer.address.state")
-    zip_code = (By.ID, "customer.address.zipCode")
-    phone = (By.ID, "customer.phoneNumber")
-    ssn = (By.ID, "customer.ssn")
-    username = (By.ID, "customer.username")
-    password = (By.ID, "customer.password")
-    confirm_password = (By.ID, "repeatedPassword")
-    register_button = (By.XPATH, "//input[@value='Register']")
-    duplicate_username_error = (By.ID, "customer.username.errors")
-    success_title = (By.CSS_SELECTOR, "#rightPanel h1.title")
+    first_name = RegisterPageLocators.FIRST_NAME
+    last_name = RegisterPageLocators.LAST_NAME
+    address = RegisterPageLocators.ADDRESS
+    city = RegisterPageLocators.CITY
+    state = RegisterPageLocators.STATE
+    zip_code = RegisterPageLocators.ZIP_CODE
+    phone = RegisterPageLocators.PHONE
+    ssn = RegisterPageLocators.SSN
+    username = RegisterPageLocators.USERNAME
+    password = RegisterPageLocators.PASSWORD
+    confirm_password = RegisterPageLocators.CONFIRM_PASSWORD
+    register_button = RegisterPageLocators.REGISTER_BUTTON
+    duplicate_username_error = RegisterPageLocators.DUPLICATE_USERNAME_ERROR
+    success_title = RegisterPageLocators.SUCCESS_TITLE
 
     def open(self):
         self.driver.get(SYSTEM_URL)

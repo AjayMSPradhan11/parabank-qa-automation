@@ -1,17 +1,17 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
 from pages.base_page import BasePage
+from pages.locators import TransferFundsPageLocators
 
 SYSTEM_URL = "https://parabank.parasoft.com/parabank/transfer.htm"
 
 
 class TransferFundsPage(BasePage):
-    amount_input = (By.ID, "amount")
-    from_account_select = (By.ID, "fromAccountId")
-    to_account_select = (By.ID, "toAccountId")
-    transfer_button = (By.XPATH, "//input[@value='Transfer']")
-    confirmation_title = (By.CSS_SELECTOR, "#showResult h1.title")
+    amount_input = TransferFundsPageLocators.AMOUNT_INPUT
+    from_account_select = TransferFundsPageLocators.FROM_ACCOUNT_SELECT
+    to_account_select = TransferFundsPageLocators.TO_ACCOUNT_SELECT
+    transfer_button = TransferFundsPageLocators.TRANSFER_BUTTON
+    confirmation_title = TransferFundsPageLocators.CONFIRMATION_TITLE
 
     def open(self):
         self.driver.get(SYSTEM_URL)
