@@ -1,7 +1,8 @@
 import logging
 
-from pages.register_page import RegisterPage
-from tests.test_data import EXISTING_USERNAME, new_user
+from pages.register_page.registerpage import RegisterPage
+from testdata.logindata import EXISTING_USERNAME
+from testdata.registerdata import new_user
 
 logger = logging.getLogger(__name__)
 
@@ -14,7 +15,7 @@ def test_register_new_user_success(driver):
     register_page.register(user)
 
     register_page.wait_for_registration_success()
-    actual_text = register_page.text_of(register_page.success_title)
+    actual_text = register_page.success_title.text
     logger.info("Asserting 'Welcome %s' is present in heading. Actual heading text: %r", user["username"], actual_text)
     assert f"Welcome {user['username']}" in actual_text
 

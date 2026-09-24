@@ -4,8 +4,8 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-from pages.login_page import LoginPage
-from tests.test_data import EXISTING_USERNAME, EXISTING_PASSWORD
+from pages.login_page.loginpage import LoginPage
+from testdata.logindata import EXISTING_USERNAME, EXISTING_PASSWORD
 
 logging.basicConfig(level=logging.INFO)
 
@@ -25,5 +25,5 @@ def logged_in_driver(driver):
     login_page = LoginPage(driver)
     login_page.open()
     login_page.login(EXISTING_USERNAME, EXISTING_PASSWORD)
-    login_page.find(login_page.accounts_overview_title)
+    login_page.wait_for_accounts_overview()
     return driver

@@ -1,9 +1,16 @@
-import json
 import random
 import time
-from pathlib import Path
 
-DATA_DIR = Path(__file__).parent / "data"
+USER_TEMPLATE = {
+    "first_name": "Ajay",
+    "last_name": "Trainee",
+    "address": "Khachhen-16",
+    "city": "Patan",
+    "state": "Bagmati",
+    "zip_code": "44600",
+    "phone": "9800000000",
+}
+
 
 def unique_username(prefix: str = "qa") -> str:
     # kept short: this ParaBank instance falsely reports long usernames as
@@ -13,14 +20,9 @@ def unique_username(prefix: str = "qa") -> str:
 
 
 def new_user(username: str = None) -> dict:
-    with open(DATA_DIR / "user_template.json") as f:
-        user = json.load(f)
+    user = dict(USER_TEMPLATE)
 
     user["username"] = username or unique_username()
     user["ssn"] = str(random.randint(100000000, 999999999))
     user["password"] = "Qa@12345"
     return user
-
-
-EXISTING_USERNAME = "john"  # seeded demo account on ParaBank, always present
-EXISTING_PASSWORD = "demo"
