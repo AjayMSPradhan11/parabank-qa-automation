@@ -1,7 +1,7 @@
 import logging
 
 from pages.login_page.loginpage import LoginPage
-from testdata.logindata import EXISTING_USERNAME, EXISTING_PASSWORD, LOGIN_CASES
+from testdata.logindata import LOGIN_CASES
 
 logger = logging.getLogger(__name__)
 
@@ -9,10 +9,12 @@ LOGIN_CASES_BY_ID = {case["id"]: case for case in LOGIN_CASES}
 
 
 def test_login_with_valid_credentials(driver):
+    case = LOGIN_CASES_BY_ID["valid_login"]
+
     login_page = LoginPage(driver)
     login_page.open()
 
-    login_page.login(EXISTING_USERNAME, EXISTING_PASSWORD)
+    login_page.login(case["username"], case["password"])
     login_page.wait_for_accounts_overview()
 
     actual_text = login_page.accounts_overview_title.text
