@@ -7,16 +7,14 @@ from pages.basepage import BasePage, DEFAULT_TIMEOUT
 from pages.register_page.registerlocators import RegisterLocators
 from pages.register_page.registerproperties import RegisterProperties
 
-logger = logging.getLogger(__name__)
-
 
 class RegisterPage(RegisterProperties, BasePage):
     def open(self):
-        logger.info("Opening register page")
+        logging.info("Opening register page")
         self.driver.get(self.SYSTEM_URL)
 
     def register(self, user: dict):
-        logger.info("Registering new user: %s", user["username"])
+        logging.info("Registering new user: %s", user["username"])
         self.first_name.send_keys(user["first_name"])
         self.last_name.send_keys(user["last_name"])
         self.address.send_keys(user["address"])
@@ -34,7 +32,7 @@ class RegisterPage(RegisterProperties, BasePage):
         # register.htm re-renders in place on success (no redirect/URL change) with
         # an h1 reading "Welcome <username>" - wait for that text, not just visibility,
         # since the pre-submit page already has a visible h1.title ("Signing up is easy!")
-        logger.info("Waiting for registration success")
+        logging.info("Waiting for registration success")
         self.wait.until(ec.text_to_be_present_in_element(RegisterLocators.SUCCESS_TITLE, "Welcome"))
 
     def wait_for_registration_outcome(self):
@@ -42,7 +40,7 @@ class RegisterPage(RegisterProperties, BasePage):
         # whichever the server actually renders - the live demo server occasionally
         # skips rendering the error on the first submit, so this distinguishes that
         # from a real locator/timing bug instead of just timing out with no information.
-        logger.info("Waiting for registration outcome")
+        logging.info("Waiting for registration outcome")
         end_time = time.time() + DEFAULT_TIMEOUT
         while time.time() < end_time:
             errors = self.driver.find_elements(*RegisterLocators.DUPLICATE_USERNAME_ERROR)

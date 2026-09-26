@@ -1,0 +1,65 @@
+Slide 1: Problem Statement
+- Manual testing of banking workflows (login, registration, fund transfers, bill pay) is repetitive, slow, and error-prone
+- Regression testing before each release consumes significant QA time and effort
+- Need for a repeatable, maintainable automated test suite to validate core banking features quickly and consistently
+
+Slide 2: Objectives
+- Build an automated UI test suite for ParaBank using Selenium WebDriver, Python, and Pytest
+- Apply the Page Object Model (POM), split into Locators, Properties, and Page classes for maintainability
+- Separate test data from test logic (data-driven testing) using dedicated Python data modules
+- Add structured logging so every assertion states what it checked and what it found
+- Cover both positive and negative test scenarios
+
+Slide 3: Tools & Technologies Used
+- Python 3
+- Selenium WebDriver
+- Pytest (test runner)
+- pytest-html (HTML reporting)
+- pytest-rerunfailures (auto-retry on failure)
+- webdriver-manager (automatic ChromeDriver management)
+- PyCharm (IDE)
+- Git & GitHub (version control)
+
+Slide 4: Implementation Plan
+1. Set up Python virtual environment and install dependencies
+2. Design the Page Object Model structure - one folder per page, each split into Locators / Properties / Page files
+3. Build test data modules for each feature (login, register, transfer, bill pay) as plain Python files
+4. Write test cases covering each ParaBank module
+5. Add logging to every function and configure HTML reporting
+6. Verify all test cases against the live ParaBank application
+
+Slide 5: Design and Development
+- Page Object Model architecture: Locators (element selectors) -> Properties (element accessors via @property) -> Page (actions/workflows, using multiple inheritance from its Properties mixin and a shared BasePage)
+- BasePage provides common driver/wait setup, inherited by every page object
+- testdata/ modules hold both static and dynamically generated data (e.g. unique usernames), kept separate from test logic
+- conftest.py (at the project root) provides reusable fixtures (driver, logged_in_driver) shared across all tests
+- Logging added to every function for traceability, using plain logging.info() calls
+
+Slide 6: Testing and Validation
+- 6 automated test cases across 4 modules: Registration, Login, Transfer Funds, Bill Pay
+- Covers both positive scenarios (valid actions) and negative scenarios (invalid credentials, duplicate username)
+- Valid and invalid login data unified into a single data structure for consistency
+- Self-contained HTML report generated on every run, including logged assertion details
+- All test cases verified directly against the live ParaBank demo site
+
+Slide 7: Challenges Faced
+- ParaBank's public demo site is occasionally unstable (login outages, "internal error" responses) - mitigated with automatic test reruns
+- Async AJAX-loaded account dropdowns on the Transfer Funds page required explicit waits to avoid race conditions
+- ParaBank incorrectly rejects usernames longer than ~14 characters as "already exists" - worked around by generating short usernames
+- IDE project settings tracked in version control caused environment breakage when moving between machines
+
+Slide 8: Learning and Improvements
+Learning:
+- Practical experience applying the Page Object Model, including separating locators, element access, and actions
+- Importance of separating test data from test logic for scalability
+- Value of structured, consistent logging for debugging test failures
+
+Improvements (future scope):
+- Add more negative test scenarios (insufficient funds, blank required fields)
+- Introduce a CI/CD pipeline (e.g. GitHub Actions) for automatic test runs
+- Expand coverage to additional modules (Account Overview, Find Transactions)
+
+Slide 9: Conclusion
+- Successfully built a structured, maintainable automated test suite for ParaBank's core banking workflows
+- Demonstrates Page Object Model, data-driven testing, and logging best practices in a real QA automation project
+- Provides a solid foundation for continued test coverage expansion

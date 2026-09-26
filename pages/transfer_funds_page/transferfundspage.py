@@ -6,21 +6,19 @@ from pages.basepage import BasePage
 from pages.transfer_funds_page.transferfundslocators import TransferFundsLocators
 from pages.transfer_funds_page.transferfundsproperties import TransferFundsProperties
 
-logger = logging.getLogger(__name__)
-
 
 class TransferFundsPage(TransferFundsProperties, BasePage):
     def open(self):
-        logger.info("Opening transfer funds page")
+        logging.info("Opening transfer funds page")
         self.driver.get(self.SYSTEM_URL)
 
     def wait_for_accounts_loaded(self):
         # fromAccountId/toAccountId are populated by an async AJAX call on page load
-        logger.info("Waiting for account dropdowns to load")
+        logging.info("Waiting for account dropdowns to load")
         self.wait.until(ec.presence_of_element_located(TransferFundsLocators.FROM_ACCOUNT_OPTION))
 
     def transfer(self, amount: str, from_account: str = None, to_account: str = None):
-        logger.info("Transferring amount: %s", amount)
+        logging.info("Transferring amount: %s", amount)
         self.wait_for_accounts_loaded()
         self.amount_input.send_keys(amount)
         if from_account:
@@ -30,5 +28,5 @@ class TransferFundsPage(TransferFundsProperties, BasePage):
         self.transfer_button.click()
 
     def wait_for_confirmation(self):
-        logger.info("Waiting for transfer confirmation")
+        logging.info("Waiting for transfer confirmation")
         self.wait.until(ec.visibility_of_element_located(TransferFundsLocators.CONFIRMATION_TITLE))

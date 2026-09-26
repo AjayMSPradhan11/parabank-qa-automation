@@ -3,8 +3,6 @@ import logging
 from pages.login_page.loginpage import LoginPage
 from testdata.logindata import LOGIN_CASES
 
-logger = logging.getLogger(__name__)
-
 LOGIN_CASES_BY_ID = {case["id"]: case for case in LOGIN_CASES}
 
 
