@@ -1,6 +1,6 @@
 import logging
 
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
 
 from pages.basepage import BasePage
 from pages.update_contact_page.updatecontactlocators import UpdateContactLocators
@@ -11,6 +11,10 @@ class UpdateContactPage(UpdateContactProperties, BasePage):
     def open(self):
         logging.info("Opening update contact page")
         self.driver.get(self.SYSTEM_URL)
+
+        self.wait.until(EC.visibility_of_element_located(UpdateContactLocators.FIRST_NAME))
+
+        self.wait.until(EC.text_to_be_present_in_element_value(UpdateContactLocators.LAST_NAME,"Smith"))
 
     def enter_text(self, field, value):
         field.clear()
@@ -29,13 +33,13 @@ class UpdateContactPage(UpdateContactProperties, BasePage):
 
     def get_result_heading(self):
         logging.info("Waiting for update profile result heading")
-        self.wait.until(expected_conditions.visibility_of_element_located(UpdateContactLocators.RESULT_TITLE))
+        self.wait.until(EC.visibility_of_element_located(UpdateContactLocators.RESULT_TITLE))
         heading = self.result_title
         return heading.text
 
     def get_first_name_error(self):
         logging.info("Waiting for first name error")
-        self.wait.until(expected_conditions.visibility_of_element_located(UpdateContactLocators.FIRST_NAME_ERROR))
+        self.wait.until(EC.visibility_of_element_located(UpdateContactLocators.FIRST_NAME_ERROR))
         error = self.first_name_error
         return error.text
 

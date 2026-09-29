@@ -18,7 +18,7 @@ class FindTransferPage(FindTransferProperties, BasePage):
         self.find_by_transaction_id(transaction_id)
 
     def get_results_heading(self):
-        self.wait.until(expected_conditions.visibility_of_element_located(FindTransferLocators.RESULTS_TITLE))
+        self.wait.until(EC.visibility_of_element_located(FindTransferLocators.RESULTS_TITLE))
         heading = self.results_title
         return heading.text
 
@@ -27,6 +27,6 @@ class FindTransferPage(FindTransferProperties, BasePage):
         return len(rows)
 
     def get_transaction_id_error(self):
-        self.wait.until(expected_conditions.visibility_of_element_located(FindTransferLocators.TRANSACTION_ID_ERROR))
+        self.wait.until(EC.visibility_of_element_located(FindTransferLocators.TRANSACTION_ID_ERROR))
         error = self.transaction_id_error
         return error.text

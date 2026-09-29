@@ -24,9 +24,6 @@ def test_update_contact_with_empty_first_name(logged_in_driver):
                         INVALID_CONTACT["city"], INVALID_CONTACT["state"], INVALID_CONTACT["zip_code"],
                         INVALID_CONTACT["phone"])
 
-    logging.info("Panel text after submit: %r", page.get_panel_text())
-    logging.info("Browser validation message: %r", page.get_first_name_validation_message())
-
     actual_error = page.get_first_name_error()
     logging.info("Asserting %r is present in error message. Actual error: %r",
                  INVALID_CONTACT["expect_message"], actual_error)

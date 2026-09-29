@@ -12,4 +12,4 @@ class UpdateContactLocators:
     UPDATE_BUTTON = (By.CSS_SELECTOR, "input[value='Update Profile']")
     RIGHT_PANEL = (By.ID, "rightPanel")
     RESULT_TITLE = (By.XPATH, "//h1[contains(text(), 'Profile Updated')]")
-    FIRST_NAME_ERROR = (By.XPATH, "//*[contains(@class, 'error')][normalize-space()]")
+    FIRST_NAME_ERROR = (By.ID,"firstName-error")
