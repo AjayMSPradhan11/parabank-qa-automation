@@ -1,4 +1,5 @@
 import logging
+import time
 
 from pages.transfer_funds_page.transferfundspage import TransferFundsPage
 
@@ -8,6 +9,7 @@ def test_transfer_funds_success(logged_in_driver):
     transfer_page.open()
 
     transfer_page.transfer(amount="10")
+    time.sleep(2)
 
     transfer_page.wait_for_confirmation()
     actual_text = transfer_page.confirmation_title.text

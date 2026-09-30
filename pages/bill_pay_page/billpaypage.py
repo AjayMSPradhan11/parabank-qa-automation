@@ -28,3 +28,7 @@ class BillPayPage(BillPayProperties, BasePage):
     def wait_for_confirmation(self):
         logging.info("Waiting for bill pay confirmation")
         self.wait.until(ec.visibility_of_element_located(BillPayLocators.CONFIRMATION_TITLE))
+
+    def wait_for_error(self):
+        logging.info("Waiting for bill pay validation error")
+        self.wait.until(ec.visibility_of_element_located(BillPayLocators.ERROR_MESSAGE))

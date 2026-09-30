@@ -1,4 +1,5 @@
 import logging
+import time
 
 from pages.login_page.loginpage import LoginPage
 from testdata.logindata import LOGIN_CASES
@@ -13,6 +14,7 @@ def test_login_with_valid_credentials(driver):
     login_page.open()
 
     login_page.login(case["username"], case["password"])
+    time.sleep(2)
     login_page.wait_for_accounts_overview()
 
     actual_text = login_page.accounts_overview_title.text
@@ -27,6 +29,7 @@ def test_login_with_invalid_credentials(driver):
     login_page.open()
 
     login_page.login(case["username"], case["password"])
+    time.sleep(2)
     login_page.wait_for_error_message()
 
     error_text = login_page.error_message.text

@@ -13,3 +13,4 @@ class BillPayLocators:
     AMOUNT = (By.NAME, "amount")
     SEND_PAYMENT_BUTTON = (By.XPATH, "//input[@value='Send Payment']")
     CONFIRMATION_TITLE = (By.CSS_SELECTOR, "#billpayResult h1.title")
+    ERROR_MESSAGE = (By.CSS_SELECTOR, "span.error")

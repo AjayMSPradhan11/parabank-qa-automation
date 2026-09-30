@@ -14,7 +14,11 @@ class UpdatecontactPage(UpdatecontactProperties, BasePage):
 
         self.wait.until(ec.visibility_of_element_located(UpdatecontactLocators.FIRST_NAME))
 
-        self.wait.until(ec.text_to_be_present_in_element_value(UpdatecontactLocators.LAST_NAME,"Smith"))
+        self.wait.until(self.last_name_is_filled)
+
+    def last_name_is_filled(self, driver):
+        value = driver.find_element(*UpdatecontactLocators.LAST_NAME).get_attribute("value")
+        return value.strip() != ""
 
     def enter_text(self, field, value):
         field.clear()

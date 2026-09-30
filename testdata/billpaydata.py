@@ -20,7 +20,7 @@ BILL_PAY_CASES = [
         "phone": "9800000000",
         "account_number": "12345",
         "amount": "25",
-        "expect_message": "VERIFY_MANUALLY",
+        "expect_message": "Payee name is required.",
     },
     {
         "id": "missing_account_number",

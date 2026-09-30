@@ -16,6 +16,11 @@ class TransferFundsPage(TransferFundsProperties, BasePage):
         logging.info("Waiting for account dropdowns to load")
         self.wait.until(ec.presence_of_element_located(TransferFundsLocators.FROM_ACCOUNT_OPTION))
 
+    def get_available_accounts(self) -> list[str]:
+        logging.info("Reading available accounts from the From dropdown")
+        self.wait_for_accounts_loaded()
+        return [option.text for option in self.from_account_select.options]
+
     def transfer(self, amount: str, from_account: str = None, to_account: str = None):
         logging.info("Transferring amount: %s", amount)
         self.wait_for_accounts_loaded()

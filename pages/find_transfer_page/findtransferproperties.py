@@ -73,5 +73,3 @@ class FindTransferProperties:
     @property
     def transaction_rows(self):
         return self.driver.find_elements(*FindTransferLocators.TRANSACTION_ROW)
-
-

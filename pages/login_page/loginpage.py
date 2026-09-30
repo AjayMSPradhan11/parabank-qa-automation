@@ -21,7 +21,7 @@ class LoginPage(LoginProperties, BasePage):
 
     def wait_for_accounts_overview(self):
         logging.info("Waiting for accounts overview")
-        self.wait.until(ec.visibility_of_element_located(LoginLocators.ACCOUNTS_OVERVIEW_TITLE))
+        self.wait.until(ec.text_to_be_present_in_element(LoginLocators.ACCOUNTS_OVERVIEW_TITLE, "Accounts Overview"))
 
     def wait_for_error_message(self):
         logging.info("Waiting for login error message")

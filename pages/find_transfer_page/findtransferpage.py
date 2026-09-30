@@ -9,6 +9,8 @@ class FindTransferPage(FindTransferProperties, BasePage):
     def open(self):
         self.driver.get(self.SYSTEM_URL)
 
+        self.wait.until(ec.visibility_of_element_located(FindTransferLocators.TRANSACTION_ID_INPUT))
+
     def find_by_transaction_id(self, transaction_id):
         self.transaction_id_input.send_keys(transaction_id)
         self.find_by_id_button.click()

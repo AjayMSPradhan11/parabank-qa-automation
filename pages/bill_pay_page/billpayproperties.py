@@ -47,3 +47,7 @@ class BillPayProperties:
     @property
     def confirmation_title(self):
         return self.driver.find_element(*BillPayLocators.CONFIRMATION_TITLE)
+
+    @property
+    def error_message(self):
+        return self.driver.find_element(*BillPayLocators.ERROR_MESSAGE)
