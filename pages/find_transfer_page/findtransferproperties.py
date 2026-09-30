@@ -8,7 +8,7 @@ class FindTransferProperties:
 
     @property
     def account_select(self):
-        return Select(self.driver.find_element(*FindTransferLocators.ACCOUNT_SELECT))
+        return Select(self.driver.find_element(*FindTransferLocators.ACCOUNT_SELecT))
 
     @property
     def transaction_id_input(self):

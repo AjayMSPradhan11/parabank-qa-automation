@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class UpdateContactLocators:
+class UpdatecontactLocators:
     FIRST_NAME = (By.ID, "customer.firstName")
     LAST_NAME = (By.ID, "customer.lastName")
     ADDRESS = (By.ID, "customer.address.street")
@@ -10,6 +10,5 @@ class UpdateContactLocators:
     ZIP_CODE = (By.ID, "customer.address.zipCode")
     PHONE = (By.ID, "customer.phoneNumber")
     UPDATE_BUTTON = (By.CSS_SELECTOR, "input[value='Update Profile']")
-    RIGHT_PANEL = (By.ID, "rightPanel")
     RESULT_TITLE = (By.XPATH, "//h1[contains(text(), 'Profile Updated')]")
     FIRST_NAME_ERROR = (By.ID,"firstName-error")

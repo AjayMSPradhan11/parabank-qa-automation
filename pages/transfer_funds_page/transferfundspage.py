@@ -13,7 +13,6 @@ class TransferFundsPage(TransferFundsProperties, BasePage):
         self.driver.get(self.SYSTEM_URL)
 
     def wait_for_accounts_loaded(self):
-        # fromAccountId/toAccountId are populated by an async AJAX call on page load
         logging.info("Waiting for account dropdowns to load")
         self.wait.until(ec.presence_of_element_located(TransferFundsLocators.FROM_ACCOUNT_OPTION))
 

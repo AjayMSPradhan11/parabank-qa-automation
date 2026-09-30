@@ -13,9 +13,6 @@ USER_TEMPLATE = {
 
 
 def unique_username(prefix: str = "qa") -> str:
-    # kept short: this ParaBank instance falsely reports long usernames as
-    # already taken (looks like a backend length-truncation bug), verified
-    # against the live site - usernames over ~14 chars fail registration
     return f"{prefix}{str(int(time.time()))[-5:]}{random.randint(10, 99)}"
 
 

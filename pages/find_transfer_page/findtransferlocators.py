@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 
 class FindTransferLocators:
-    ACCOUNT_SELECT = (By.ID, "accountId")
+    ACCOUNT_SELecT = (By.ID, "accountId")
     ACCOUNT_OPTION = (By.CSS_SELECTOR, "#accountId option")
     TRANSACTION_ID_INPUT = (By.ID, "transactionId")
     TRANSACTION_DATE_INPUT = (By.ID, "transactionDate")

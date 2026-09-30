@@ -12,11 +12,11 @@ class TransferFundsProperties:
 
     @property
     def from_account_select(self):
-        return Select(self.driver.find_element(*TransferFundsLocators.FROM_ACCOUNT_SELECT))
+        return Select(self.driver.find_element(*TransferFundsLocators.FROM_ACCOUNT_SELecT))
 
     @property
     def to_account_select(self):
-        return Select(self.driver.find_element(*TransferFundsLocators.TO_ACCOUNT_SELECT))
+        return Select(self.driver.find_element(*TransferFundsLocators.TO_ACCOUNT_SELecT))
 
     @property
     def transfer_button(self):

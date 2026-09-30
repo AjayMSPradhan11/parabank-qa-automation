@@ -21,7 +21,6 @@ def driver():
 
 @pytest.fixture
 def logged_in_driver(driver):
-    """Returns a driver already logged in as the seeded demo user (john/demo)."""
     login_page = LoginPage(driver)
     login_page.open()
     login_page.login(EXISTING_USERNAME, EXISTING_PASSWORD)
